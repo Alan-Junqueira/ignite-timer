@@ -1,5 +1,3 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-export const Primrary = styled.button`
-  
-`;
+export const Primrary = styled.button``
