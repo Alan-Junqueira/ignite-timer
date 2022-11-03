@@ -9,11 +9,11 @@ export function Header() {
       <Icon icon="logo" />
 
       <nav>
-        <NavLink to="/">
+        <NavLink to="/" title="Timer" end>
           <Timer size={24} />
         </NavLink>
 
-        <NavLink to="/history">
+        <NavLink to="/history" title="History">
           <Scroll size={24} />
         </NavLink>
       </nav>
