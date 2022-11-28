@@ -6,7 +6,7 @@ import {
   useReducer,
   useState,
 } from 'react'
-import { ActionTypes, CyclesAction, ICycle } from '../reducers/cycles/actions'
+import { CyclesAction, ICycle } from '../reducers/cycles/actions'
 import { cyclesReducer } from '../reducers/cycles/reducer'
 
 interface ICyclesContextProvider {
@@ -19,14 +19,14 @@ interface IcreateNewCycle {
 }
 
 interface ICyclesContext {
+  cycles: ICycle[]
   activeCycle: ICycle | undefined
   activeCycleId: string | null
-  markAsCurrentCycleAsFinished: () => void
   amountSecondsPassed: number
   setSecondsPassed: (seconds: number) => void
   createNewCycle: (data: IcreateNewCycle) => void
   interruptCycle: () => void
-  cycles: ICycle[]
+  markAsCurrentCycleAsFinished: () => void
 }
 
 export const CyclesContext = createContext({} as ICyclesContext)
@@ -46,6 +46,8 @@ export const CyclesContextProvider = ({ children }: ICyclesContextProvider) => {
       if (storedStateAsJSON) {
         return JSON.parse(storedStateAsJSON)
       }
+
+      return { cycles: [], activeCycleId: null }
     },
   )
 
